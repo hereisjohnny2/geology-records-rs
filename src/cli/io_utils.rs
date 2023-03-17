@@ -18,7 +18,7 @@ pub fn safe_read(description: &str) -> String {
     }
 }
 
-fn safe_read_and_parse<T: FromStr>(description: &str) -> T {
+pub fn safe_read_and_parse<T: FromStr>(description: &str) -> T {
     println!("{description}:");
     let stdin = io::stdin();
     let mut buf = String::new();
@@ -50,7 +50,7 @@ fn read_physical_property<'a>(description: &'a str, unit: &'a str) -> PhysicalPr
     PhysicalProperty { value, unit }
 }
 
-pub fn create_rock_sample_entry() -> RockSample {
+pub fn create_rock_sample_entry(id: usize) -> RockSample {
     let name = safe_read("Conducted by");
     let description = safe_read("Sample Description");
     let mass = read_physical_property("Mass", "kg");
@@ -60,5 +60,5 @@ pub fn create_rock_sample_entry() -> RockSample {
     let radius = read_physical_property("Radius", "mm");
 
     let geometry = SampleGeometry::new(radius, height);
-    RockSample::new(name, description, mass, porosity, permeability, geometry)
+    RockSample::new(id, name, description, mass, porosity, permeability, geometry)
 }

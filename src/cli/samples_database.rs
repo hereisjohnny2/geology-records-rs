@@ -1,18 +1,25 @@
 use crate::geology::{physical_properties::PhysicalProperty, rock_sample::RockSample};
 
 pub struct SamplesDatabase {
+    count: usize,
     samples: Vec<RockSample>,
 }
 
 impl SamplesDatabase {
     pub fn new() -> Self {
         Self {
+            count: 0,
             samples: Vec::new(),
         }
     }
 
     pub fn add(&mut self, value: RockSample) {
         self.samples.push(value);
+        self.count += 1;
+    }
+
+    pub fn count(&self) -> usize {
+        self.count
     }
 
     fn avg_porosity(&self) -> Option<PhysicalProperty> {
@@ -76,9 +83,9 @@ impl ToString for SamplesDatabase {
             );
         }
 
-        self.samples.iter().enumerate().for_each(|(key, value)| {
-            output.push_str(format!("\n{}\n{}\n", key, value.to_string()).as_str())
-        });
+        self.samples
+            .iter()
+            .for_each(|sample| output.push_str(format!("\n{}\n", sample.to_string()).as_str()));
 
         output
     }

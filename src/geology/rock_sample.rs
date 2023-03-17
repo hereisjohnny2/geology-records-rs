@@ -2,6 +2,7 @@ use super::{physical_properties::PhysicalProperty, sample_geometry::SampleGeomet
 
 #[derive(Debug, Clone)]
 pub struct RockSample {
+    pub id: usize,
     pub name: String,
     pub description: String,
     pub mass: Box<PhysicalProperty>,
@@ -12,6 +13,7 @@ pub struct RockSample {
 
 impl RockSample {
     pub fn new(
+        id: usize,
         name: String,
         description: String,
         mass: PhysicalProperty,
@@ -20,6 +22,7 @@ impl RockSample {
         geometry: SampleGeometry,
     ) -> Self {
         Self {
+            id,
             name,
             description,
             mass: Box::new(mass),
@@ -47,7 +50,8 @@ impl RockSample {
 impl<'a> ToString for RockSample {
     fn to_string(&self) -> String {
         format!(
-            "{}\n{}\n#mass: {}\n#porosity: {}\n#permeability: {}\n#height: {}\n#diameter: {}\n#volume: {}\n#density: {}\n",
+            "\n{}\n{}\n{}\n#mass: {}\n#porosity: {}\n#permeability: {}\n#height: {}\n#diameter: {}\n#volume: {}\n#density: {}\n",
+            self.id,
             self.name,
             self.description,
             self.mass.to_string(),
