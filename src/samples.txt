@@ -1,0 +1,16 @@
+Geology Report
+
+Average Porosity: 0.456 %
+Average Permeability: 234 md
+
+0
+João
+This a test
+#mass: 10.786 kg
+#porosity: 0.456 %
+#permeability: 234 md
+#height: 400 mm
+#diameter: 40 mm
+#volume: 502654.8245743669 mm³
+#density: 0.00002145806520236479 kg/mm³
+
