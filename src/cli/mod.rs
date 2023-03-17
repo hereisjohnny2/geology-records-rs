@@ -1,13 +1,14 @@
 pub mod io_utils;
+pub mod samples_database;
 
 use std::{
     fs::File,
     io::{self, Write},
 };
 
-use crate::{
-    cli::io_utils::{create_rock_sample_entry, safe_read},
-    geology::samples_database::SamplesDatabase,
+use crate::cli::{
+    io_utils::{create_rock_sample_entry, safe_read},
+    samples_database::SamplesDatabase,
 };
 
 pub fn run() -> io::Result<()> {

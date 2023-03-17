@@ -1,4 +1,4 @@
-use super::{rock_sample::RockSample, physical_properties::PhysicalProperty};
+use crate::geology::{physical_properties::PhysicalProperty, rock_sample::RockSample};
 
 pub struct SamplesDatabase {
     samples: Vec<RockSample>,
